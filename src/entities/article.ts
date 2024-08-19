@@ -21,6 +21,12 @@ export const useArticleStore = defineStore('article', {
             userImg: 'https://opis-cdn.tinkoffjournal.ru/mercury/in-out-alien-best-movies.jpg?preset=image_1280w',
             userName: 'Иванов иван',
             commentText: 'Статья бомба!'
+          },
+          {
+            id: 'comment_2',
+            userImg: 'https://opis-cdn.tinkoffjournal.ru/mercury/in-out-alien-best-movies.jpg?preset=image_1280w',
+            userName: 'Иванов иван',
+            commentText: 'Статья бомба!'
           }
         ]
       },

@@ -1,23 +1,34 @@
 <script lang="ts" setup>
+import { ref } from 'vue';
 import { storeToRefs } from 'pinia';
 
-import { RapiraArticle } from '@/components';
+import { RapiraArticle, RapiraModal, RapiraNavbarFilter } from '@/components';
 import { useArticleStore } from '@/entities';
 
 const articleStore = useArticleStore();
 
 const { activeArticles } = storeToRefs(articleStore);
+
+const isOpenModal = ref(false);
+
+const openModal = ():void => {
+  isOpenModal.value = true;
+}
 </script>
 
 <template>
+  <RapiraNavbarFilter />
   <div class="home-wrapper">
     
     <div class="home-container">
+      
+      <RapiraModal v-if="isOpenModal" />
 
       <RapiraArticle 
         v-for="article in activeArticles"
         :key="article.id"
         :article="article"
+        @click="openModal()"
       />
 
     </div>

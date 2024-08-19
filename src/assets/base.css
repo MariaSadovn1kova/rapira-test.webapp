@@ -18,17 +18,29 @@
 :root {
   --color-background: var(--c-gray-light);
 
+  --color-filter-background: var(--c-white);
+
   --container-background: var(--c-white);
 
   --tag-background: var(--c-blue-light);
   --tag-color: var(--c-blue-01);
 
   --article-info-color: var(--c-gray-01);
+
+  --modal-background: var(--c-black-00)
 }
 
 /* Дефолт */
 :root {
   --wrapper-padding: 20px 50px 30px 50px;
+
+  --article-width: 400px;
+  --article-img-height: 250px;
+
+  --nav-wrapper-padding: 0 50px;
+  --nav-width: 1300px;
+
+  --nav-filter-padding: 24px 50px;
 
   --container-padding: 30px;
   --container-columns: repeat(3, 1fr);
@@ -46,6 +58,14 @@
   :root {
     --wrapper-padding: 10px 10px 30px 10px;
 
+    --article-width: 365px;
+    --article-img-height: 220px;
+
+    --nav-wrapper-padding: 0 22px;
+    --nav-width: 780px;
+
+    --nav-filter-padding: 24px 22px;
+
     --container-columns: repeat(2, 1fr);
     --container-column-gap: 20px;
     --container-row-gap: 25px;
@@ -54,9 +74,16 @@
 }
 
 /* Мобильная */
-@media (max-width: 900px) {
+@media (max-width: 800px) {
   :root {
     --wrapper-padding: 10px 10px 30px 10px;
+
+    --article-width: 325px;
+    --article-img-height: 200px;
+
+    --nav-wrapper-padding: 0 22px;
+
+    --nav-filter-padding: 12px 22px;
 
     --container-columns: 1fr;
     --container-row-gap: 20px;

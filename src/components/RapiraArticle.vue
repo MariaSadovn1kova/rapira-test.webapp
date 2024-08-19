@@ -1,11 +1,19 @@
 <script lang="ts" setup>
+import { computed } from 'vue';
+
 import { RapiraTag } from '@/components';
+
 import type { IArticle } from '@/shared';
+import { dateFormatting, readingTime, commentsCount } from '@/shared';
 
 interface IProps {
   article: IArticle
 }
 const props = defineProps<IProps>();
+
+const articleFromattedDate = computed(() => { return dateFormatting(props.article.date.toISOString())});
+const articleReadingTime = computed(() => { return readingTime(props.article.desc) });
+const articleCommentsCount = computed(() => { return commentsCount(props.article.comments) });
 </script>
 
 <template>
@@ -21,19 +29,26 @@ const props = defineProps<IProps>();
 
     <div class="article__content flex flex-col">
 
-      <div class="article__info flex">
+      <div class="article__info flex items-center">
+
         <div class="article__info-item flex">
-          <span class="font-medium">9 Апр</span>
+          <span class="flex items-center font-medium">{{ articleFromattedDate }}</span>
         </div>
+
+        <div class="article__info-border"></div>
 
         <div class="article__info-item flex justify-center">
-          <img src="@/assets/svg/btns/time.svg">
-          <span class="font-medium">2 мин</span>
+          <img class="article__info-svg" src="@/assets/svg/btns/time.svg">
+          <span class="flex items-center font-medium">{{ articleReadingTime }}</span>
         </div>
 
+        <div class="article__info-border"></div>
+
         <div class="article__info-item flex">
-          <span class="font-medium">1 комментарий</span>
+          <img class="article__info-svg" src="@/assets/svg/btns/communication.svg">
+          <span class="flex items-center font-medium">{{ articleCommentsCount }}</span>
         </div>
+
       </div>
 
       <h2>{{ article.title }}</h2>
@@ -55,11 +70,13 @@ const props = defineProps<IProps>();
 
 <style lang="sass" scoped>
 .article
-  width: 400px
+  width: var(--article-width)
+
+  transition: var(--transition)
 
 .article__img 
-  width: 400px
-  height: 250px
+  width: 100%
+  height: var(--article-img-height)
   
   border-radius: 12px
   overflow: hidden
@@ -84,6 +101,17 @@ const props = defineProps<IProps>();
   font-size: 14px
   line-height: 14px
   color: var(--article-info-color)
+
+.article__info-svg 
+  width: 20px
+  height: 20px
+
+.article__info-border
+  width: 3px
+  height: 3px
+
+  background: var(--article-info-color)
+  border-radius: 10px
 
 .article__desc
   max-height: 50px

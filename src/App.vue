@@ -1,14 +1,15 @@
 <script lang="ts" setup>
 import { RouterLink, RouterView } from 'vue-router';
+import { RapiraNavbar } from '@/components';
 
 </script>
 
 <template>
   <div class="app">
 
-    <h1 class="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+    <header>
+      <RapiraNavbar />
+    </header>
     
     <RouterView />
 
