@@ -14,15 +14,52 @@
   --c-gray-light: #F1F1F2;
 }
 
-/* semantic color variables for this project */
+/* Дефолтные цвета */
 :root {
   --color-background: var(--c-gray-light);
 
-  --color-border: var(--vt-c-divider-light-2);
-  --color-border-hover: var(--vt-c-divider-light-1);
+  --container-background: var(--c-white);
 
-  --color-heading: var(--vt-c-text-light-1);
-  --color-text: var(--vt-c-text-light-1);
+  --tag-background: var(--c-blue-light);
+  --tag-color: var(--c-blue-01);
 
-  --section-gap: 160px;
+  --article-info-color: var(--c-gray-01);
+}
+
+/* Дефолт */
+:root {
+  --wrapper-padding: 20px 50px 30px 50px;
+
+  --container-padding: 30px;
+  --container-columns: repeat(3, 1fr);
+  --container-column-gap: 20px;
+  --container-row-gap: 40px;
+  --container-radius: 12px;
+
+  --tag-radius: 20px;
+
+  --transition: 0.3s
+}
+
+/* Планшет */
+@media (max-width: 1400px) {
+  :root {
+    --wrapper-padding: 10px 10px 30px 10px;
+
+    --container-columns: repeat(2, 1fr);
+    --container-column-gap: 20px;
+    --container-row-gap: 25px;
+    --container-padding: 15px;
+  }
+}
+
+/* Мобильная */
+@media (max-width: 900px) {
+  :root {
+    --wrapper-padding: 10px 10px 30px 10px;
+
+    --container-columns: 1fr;
+    --container-row-gap: 20px;
+    --container-padding: 15px;
+  }
 }

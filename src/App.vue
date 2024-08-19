@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import { RouterLink, RouterView } from 'vue-router';
 
 </script>
@@ -9,12 +9,13 @@ import { RouterLink, RouterView } from 'vue-router';
     <h1 class="text-3xl font-bold underline">
       Hello world!
     </h1>
+    
+    <RouterView />
 
-    <!-- <RouterView /> -->
   </div>
 </template>
 
 <style lang="sass" scoped>
-.app-wrapper
-  background: red
+.app
+  width: 100%
 </style>
