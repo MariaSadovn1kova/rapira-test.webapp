@@ -4,6 +4,7 @@
 
   --c-black-00: #000000;
   --c-black-01: #181C32;
+  --c-black-02: #3F4254;
 
   --c-blue-00: #3E97FF;
   --c-blue-01: #2884EF;
@@ -11,8 +12,11 @@
 
   --c-gray-00: #A1A5B7;
   --c-gray-01: #7E8299;
+  --c-gray-02: #D8D8E5;
   --c-gray-light: #F1F1F2;
   --c-gray-bg: #F9F9F9;
+
+  --c-red: #F1416C;
 }
 
 /* Дефолтные цвета */
@@ -43,11 +47,33 @@
 
   --color-input-bg: var(--c-gray-bg);
   --color-input-bg-default: var(--c-white);
+  --color-input-border: var(--c-blue-00);
 
   --color-nav-item-color: var(--c-gray-bg);
   --color-nav-item-active-color: var(--c-blue-00);
 
   --color-nav-bg: var(--c-black-00);
+
+  --color-comment-user-name: var(--c-black-01);
+  --color-comment-text: var(--c-black-02);
+  --color-comment-date: var(--c-gray-00);
+
+  --placeholder-color: var(--c-gray-02);
+
+  --color-text-area-border: var(--c-gray-light);
+
+  --color-scroll: var(--c-gray-light);
+
+  --color-main-button-bg: var(--c-blue-00);
+  --color-main-button-text: var(--c-white);
+
+  --color-main-button-alt-bg: var(--c-blue-light);
+  --color-main-button-alt-text: var(--c-blue-00);
+
+  --color-button-disabled-bg: var(--c-gray-bg);
+  --color-button-disbled-color: var(--c-gray-02);
+
+  --color-error: var(--c-red);
 }
 
 /* Дефолт */
@@ -78,6 +104,9 @@
   --container-radius: 12px;
 
   --article-modal-width: 600px;
+  --article-modal-image-height: 373px;
+
+  --article-comment-width: 526px;
 
   --tag-radius: 20px;
 
@@ -140,6 +169,9 @@
     --container-padding: 15px;
 
     --article-modal-width: 350px;
+    --article-modal-image-height: 200px;
+
+    --article-comment-width: 246px;
 
     --mobile-hidden: none;
     --mobile-show: flex;

@@ -58,6 +58,11 @@ h2 {
   text-align: left;
 }
 
+.custom-scroll {
+  scrollbar-color: var(--color-scroll) transparent;
+  scrollbar-width: thin;
+}
+
 @media (min-width: 1400px) {
   body {
     display: flex;

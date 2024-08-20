@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import type { IArticle } from '@/shared';
+import type { IArticle, IComment } from '@/shared';
 
 interface ArticleState {
   articles: IArticle[]
@@ -21,63 +21,17 @@ export const useArticleStore = defineStore('article', {
         comments: [
           {
             id: 'comment_1',
-            userImg: 'https://opis-cdn.tinkoffjournal.ru/mercury/in-out-alien-best-movies.jpg?preset=image_1280w',
-            userName: 'Иванов иван',
-            commentText: 'Статья бомба!'
+            userImg: 'https://www.perfocal.com/blog/content/images/2021/01/Perfocal_17-11-2019_TYWFAQ_100_standard-3.jpg',
+            userName: 'Иванов Иван',
+            commentText: 'Статья бомба!вввввввввввввввввввввввввввввввввввввввввввввввввввввввввввввввввввввввввввввввввввввввввввввввввввввввввввв',
+            date: new Date()
           },
           {
             id: 'comment_2',
-            userImg: 'https://opis-cdn.tinkoffjournal.ru/mercury/in-out-alien-best-movies.jpg?preset=image_1280w',
-            userName: 'Иванов иван',
-            commentText: 'Статья бомба!'
-          }
-        ]
-      },
-      {
-        id: 'article_2',
-        imgURL: 'https://opis-cdn.tinkoffjournal.ru/mercury/in-out-alien-best-movies.jpg?preset=image_1280w',
-        date: new Date(),
-        title: 'sdfsfsf',
-        desc: 'В международный прокат выходит хоррор «Чужой: Ромул» Федерико Альвареса. Это новая часть франшизы о ксеноморфах.Мы побороли страх и пересмотрели все картины из серии: начиная от классического триллера Ридли Скотта и заканчивая его же переосмыслением собственной классики. А чтобы вам было проще выбрать фильм на вечер, расставили части от худшей к лучшей.',
-        tags: ['Книги', 'Комиксы'],
-        comments: [
-          {
-            id: 'comment_1',
-            userImg: 'https://opis-cdn.tinkoffjournal.ru/mercury/in-out-alien-best-movies.jpg?preset=image_1280w',
-            userName: 'Иванов иван',
-            commentText: 'Статья бомба!'
-          }
-        ]
-      },
-      {
-        id: 'article_3',
-        imgURL: 'https://opis-cdn.tinkoffjournal.ru/mercury/in-out-alien-best-movies.jpg?preset=image_1280w',
-        date: new Date(),
-        title: 'sdfsfdsfds',
-        desc: 'В международный прокат выходит хоррор «Чужой: Ромул» Федерико Альвареса. Это новая часть франшизы о ксеноморфах.Мы побороли страх и пересмотрели все картины из серии: начиная от классического триллера Ридли Скотта и заканчивая его же переосмыслением собственной классики. А чтобы вам было проще выбрать фильм на вечер, расставили части от худшей к лучшей.',
-        tags: ['Комиксы', 'Игры'],
-        comments: [
-          {
-            id: 'comment_1',
-            userImg: 'https://opis-cdn.tinkoffjournal.ru/mercury/in-out-alien-best-movies.jpg?preset=image_1280w',
-            userName: 'Иванов иван',
-            commentText: 'Статья бомба!'
-          }
-        ]
-      },
-      {
-        id: 'article_4',
-        imgURL: 'https://opis-cdn.tinkoffjournal.ru/mercury/in-out-alien-best-movies.jpg?preset=image_1280w',
-        date: new Date(),
-        title: 'fdsfsfs',
-        desc: 'В международный прокат выходит хоррор «Чужой: Ромул» Федерико Альвареса. Это новая часть франшизы о ксеноморфах.Мы побороли страх и пересмотрели все картины из серии: начиная от классического триллера Ридли Скотта и заканчивая его же переосмыслением собственной классики. А чтобы вам было проще выбрать фильм на вечер, расставили части от худшей к лучшей.',
-        tags: ['Кино', 'Поп-культура'],
-        comments: [
-          {
-            id: 'comment_1',
-            userImg: 'https://opis-cdn.tinkoffjournal.ru/mercury/in-out-alien-best-movies.jpg?preset=image_1280w',
-            userName: 'Иванов иван',
-            commentText: 'Статья бомба!'
+            userImg: 'https://www.perfocal.com/blog/content/images/2021/01/Perfocal_17-11-2019_TYWFAQ_100_standard-3.jpg',
+            userName: 'Иванов Иван',
+            commentText: 'Статья бомба!',
+            date: new Date()
           }
         ]
       }
@@ -123,6 +77,25 @@ export const useArticleStore = defineStore('article', {
     },
     clearFilterTags () {
       this.filterTags = []
+    },
+    addComment (comment: string, articleId: string) {
+      const newCommentId = `comment_${Date.now()}`;
+
+      const articleIndex = this.articles.findIndex(article => article.id === articleId);
+      if (articleIndex === -1) {
+        console.error('Article not found!');
+        return;
+      }
+
+      const newComment: IComment = {
+        id: newCommentId,
+        userImg: 'https://www.perfocal.com/blog/content/images/2021/01/Perfocal_17-11-2019_TYWFAQ_100_standard-3.jpg', 
+        userName: 'Вася Пупкин', 
+        commentText: comment,
+        date: new Date()
+      };
+
+      this.articles[articleIndex].comments.push(newComment);
     }
   },
 });

@@ -3,6 +3,7 @@ export interface IComment {
   userImg: string
   userName: string
   commentText: string
+  date: Date
 }
 
 export interface IArticle {

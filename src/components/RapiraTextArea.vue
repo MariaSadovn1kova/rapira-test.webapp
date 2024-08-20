@@ -3,11 +3,9 @@ import { computed } from 'vue';
 
 interface IProps {
   modelValue: string
-  height?: string
   width?: string
-  bgColor?: string
-  withStartIcon?: boolean
-  placeholder?: string
+  placeholder?: strin
+  hasError?: boolean
 }
 
 const props = defineProps<IProps>();
@@ -19,13 +17,7 @@ const modelStr = computed({
 });
 
 const wrapperStyles = computed(() => ({
-  height: props.height ? `${props.height}` : `auto`,
   width: props.width ? `${props.width}` : `auto`
-}));
-
-const inputStyles = computed(() => ({
-  background: props.bgColor ? props.bgColor : 'var(--color-input-bg-default)',
-  padding: props.withStartIcon ? `15px 34px` : `15px 34px 15px 15px`
 }));
 
 const clearInput = () => {
@@ -40,26 +32,16 @@ const clearInput = () => {
     :style="wrapperStyles"
   >
 
-    <div 
-      v-if="withStartIcon"
-      class="input__start-icon h-full flex content-center flex-wrap"
-    >
-      <div class="input__start-icon-content">
-        <slot />
-      </div>
-    </div>
-
-    <input 
+    <textarea
       v-model="modelStr"
-      type="text"
-      class="input__field h-full w-full"
+      class="input__field h-full w-full custom-scroll"
+      :class="[{ 'input__field--active' : modelStr.length }, { 'input__field--has-error' : hasError }]"
       :placeholder="placeholder || 'Введите текст...'"
-      :style="inputStyles"
-    >
+    />
 
     <button
       v-if="modelStr.length"
-      class="input__clear-btn h-full"
+      class="input__clear-btn"
       @click="clearInput"
     >
       <img 
@@ -76,29 +58,35 @@ const clearInput = () => {
 .input
   position: relative
 
-.input__start-icon
-  position: absolute
-  top: 0
-  left: 10px
-
-.input__start-icon-content
-  width: 14px
-  height: 14px
-
 .input__field
+  height: 52px
+  padding: 12px 45px 15px 15px
+  resize: none
+  
   border-radius: 6px
-  border: 1px solid transparent
+  border: 1px solid var(--color-text-area-border)
   transition: var(--transition)
 
-input:focus 
+.input__field--active 
+  height: 130px
+
+.input__field--has-error 
+  border-color: var(--color-error) !important
+
+.input__field--has-error:focus 
+  box-shadow: 0px 0px 0px 2px #F1416C52 !important
+
+.input__field::placeholder 
+  color: var(--placeholder-color)
+
+.input__field:focus 
+  height: 130px
+  box-shadow: 0px 0px 0px 2px #3E97FF52
   border-color: var(--color-input-border)
   outline: none !important
 
-input::placeholder 
-  color: var(--placeholder-color)
-
 .input__clear-btn
   position: absolute
-  top: 0
+  top: 10px
   right: 10px
 </style>

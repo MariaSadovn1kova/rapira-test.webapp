@@ -1,11 +1,17 @@
 <script lang="ts" setup>
+import { ref } from 'vue';
+
 import { 
   RapiraModal, 
   RapiraComment, 
   RapiraArticleInfo, 
   RapiraArticleTags,
+  RapiraCommentInput
 } from '@/components';
 import type { IArticle } from '@/shared';
+import { useArticleStore } from '@/entities';
+
+const articleStore = useArticleStore();
 
 interface IProps {
   isOpen: boolean
@@ -15,8 +21,15 @@ interface IProps {
 const props = defineProps<IProps>();
 const emit = defineEmits(['onArticleModalClose']);
 
+const commentText = ref('');
+
 const closeArticleModal = () => {
   emit('onArticleModalClose');
+}
+
+const createComment = () => {
+  articleStore.addComment(commentText.value, props.article.id);
+  commentText.value = '';
 }
 </script>
 
@@ -56,17 +69,21 @@ const closeArticleModal = () => {
         >
       </div>
 
+      <p class="article-modal__desc">{{ article.desc }}</p>
+
       <RapiraArticleTags 
         :tags="article.tags"
       />
 
-      <p class="article-modal__desc">{{ article.desc }}</p>
-
-      <div class="article-modal__comms">
+      <div class="article-modal__comms flex flex-col">
         <p class="article-modal__comms-title">
           Комментариев <span class="article-modal__comms-count">{{ article.comments.length }}</span> 
         </p>
-
+        <RapiraCommentInput 
+          v-model="commentText"
+          :charLimitation="250"
+          @onSubmit="createComment()"
+        />
         <div>
           <RapiraComment
             v-for="comment in article.comments"
@@ -84,7 +101,7 @@ const closeArticleModal = () => {
 <style lang="sass" scoped>
 .article-modal
   width: var(--article-modal-width)
-
+  
   gap: 15px
 
 .article-modal__header
@@ -97,7 +114,7 @@ const closeArticleModal = () => {
 
 .article-modal__img
   width: 100%
-  height: 373px
+  height: var(--article-modal-image-height)
 
   border-radius: 12px
   overflow: hidden
@@ -118,10 +135,13 @@ const closeArticleModal = () => {
   width: 20px
   height: 20px
 
+.article-modal__comms
+  gap: 10px
+
 .article-modal__comms-title
   color: var(--color-black-text)
   font-size: 16px
-  font-weight: 600
+  font-weight: 700
   line-height: 16px
 
 .article-modal__comms-count

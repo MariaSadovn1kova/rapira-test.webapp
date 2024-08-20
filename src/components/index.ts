@@ -9,6 +9,8 @@ import RapiraComment from '@/components/RapiraComment.vue';
 import RapiraArticleInfo from '@/components/RapiraArticleInfo.vue';
 import RapiraArticleTags from '@/components/RapiraArticleTags.vue';
 import RapiraInput from '@/components/RapiraInput.vue';
+import RapiraTextArea from '@/components/RapiraTextArea.vue';
+import RapiraCommentInput from '@/components/RapiraCommentInput.vue';
 
 export {
   RapiraArticle,
@@ -21,5 +23,7 @@ export {
   RapiraComment,
   RapiraArticleInfo,
   RapiraArticleTags,
-  RapiraInput
+  RapiraInput,
+  RapiraTextArea,
+  RapiraCommentInput
 }
