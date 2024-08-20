@@ -4,7 +4,7 @@ import { computed } from 'vue';
 interface IProps {
   modelValue: string
   width?: string
-  placeholder?: strin
+  placeholder?: string
   hasError?: boolean
 }
 
