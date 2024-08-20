@@ -9,7 +9,7 @@ const props = defineProps<IProps>();
 </script>
 
 <template>
-  <div class="article__tags flex">
+  <div class="article__tags flex flex-wrap">
     <RapiraTag
       v-for="tag in tags"
       :key="`tag__${tag}`"

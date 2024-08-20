@@ -43,6 +43,11 @@
 
   --color-input-bg: var(--c-gray-bg);
   --color-input-bg-default: var(--c-white);
+
+  --color-nav-item-color: var(--c-gray-bg);
+  --color-nav-item-active-color: var(--c-blue-00);
+
+  --color-nav-bg: var(--c-black-00);
 }
 
 /* Дефолт */
@@ -90,6 +95,8 @@
     --article-width: 365px;
     --article-img-height: 220px;
 
+    --nav-items-padding: 0 50px;
+    
     --nav-wrapper-padding: 0 22px;
     --nav-width: 780px;
 
@@ -113,6 +120,8 @@
 
     --article-width: 325px;
     --article-img-height: 200px;
+
+    --nav-items-padding: 0 50px;
 
     --nav-wrapper-padding: 0 22px;
 
