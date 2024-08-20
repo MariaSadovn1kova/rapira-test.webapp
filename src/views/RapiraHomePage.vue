@@ -7,7 +7,7 @@ import { useArticleStore } from '@/entities';
 
 const articleStore = useArticleStore();
 
-const { activeArticles } = storeToRefs(articleStore);
+const { filteredArticles } = storeToRefs(articleStore);
 
 const isOpenModal = ref(false);
 
@@ -25,7 +25,7 @@ const openModal = ():void => {
       <RapiraModal v-if="isOpenModal" />
 
       <RapiraArticle 
-        v-for="article in activeArticles"
+        v-for="article in filteredArticles"
         :key="article.id"
         :article="article"
         @click="openModal()"

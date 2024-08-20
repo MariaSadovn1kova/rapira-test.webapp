@@ -1,15 +1,21 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
+import { storeToRefs } from 'pinia';
+
+import { useArticleStore } from '@/entities';
 
 interface IProps {
   tagText: string
 }
 const props = defineProps<IProps>();
 
-const isActive = ref(false);
+const articleStore = useArticleStore();
+const { filteredTags } = storeToRefs(articleStore);
 
-const setActive = ():void => {
-  isActive.value = !isActive.value;
+const isActive = computed(() => { return filteredTags.value.includes(props.tagText) });
+
+const toggleTag = ():void => {
+  articleStore.toggleTag(props.tagText);
 }
 </script>
 
@@ -17,7 +23,7 @@ const setActive = ():void => {
   <button 
     class="navbar-filter-tag flex items-center cursor-pointer"
     :class="{ 'navbar-filter-tag--active': isActive }"
-    @click="setActive()"
+    @click="toggleTag()"
   >
     <p class="font-medium">{{ tagText }}</p>
     <div class="navbar-filter-tag__image">

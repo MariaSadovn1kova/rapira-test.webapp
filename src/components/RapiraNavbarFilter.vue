@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, computed } from 'vue';
+import { ref, computed, watch } from 'vue';
 import { storeToRefs } from 'pinia';
 
 import { RapiraNavbarFilterTag } from '@/components';
@@ -10,30 +10,52 @@ const articleStore = useArticleStore();
 const { activeTags } = storeToRefs(articleStore);
 
 const isOpenTags = ref(false);
+const filtertTitle = ref('');
 
 const setTags = ():void => {
   isOpenTags.value = !isOpenTags.value;
 }
 
+const clearTags = ():void => {
+  articleStore.clearFilterTags()
+}
+
 const filterBtnText = computed(() => { return isOpenTags.value ? 'Скрыть фильтр' : 'Фильтр' });
-const filterBtnIconUrl = computed(() => { return isOpenTags.value ? '@/assets/svg/btns/up.svg' : '@/assets/svg/btns/down.svg' });
+
+watch(() => filtertTitle.value, (newVal) => {
+  articleStore.setFilterTitleStr(newVal)
+});
 </script>
 
 <template>
-  
+
   <div class="navbar-filter flex justify-center">
     <div class="navbar-filter__wrapper flex justify-between">
       <h1>Блог</h1>
-      <button 
-        @click="setTags()"
-        class="navbar-filter__button flex items-center"
+      <input 
+        type="text"
+        v-model="filtertTitle"
       >
-        <span>{{ filterBtnText }}</span>
-        <img 
-          :style="isOpenTags ? 'transform: rotate(180deg); transition-duration: 0.5s' : 'transform: rotate(0deg); transition-duration: 0.5s'"
-          src="@/assets/svg/btns/down.svg"
+
+      <div class="navbar-filter__btns flex">
+        <button
+          @click="clearTags()"
+          class="navbar-filter__button-clear"
         >
-      </button>
+          Очистить
+        </button>
+        <button 
+          @click="setTags()"
+          class="navbar-filter__button flex items-center"
+        >
+          <span>{{ filterBtnText }}</span>
+          <img 
+            :style="isOpenTags ? 'transform: rotate(180deg); transition-duration: 0.5s' : 'transform: rotate(0deg); transition-duration: 0.5s'"
+            src="@/assets/svg/btns/down.svg"
+          >
+        </button>
+      </div>
+
     </div>
   </div>
 
@@ -67,6 +89,15 @@ const filterBtnIconUrl = computed(() => { return isOpenTags.value ? '@/assets/sv
   font-size: 14px
   font-weight: 500
   line-height: 14px
+
+.navbar-filter__button-clear
+  color: var(--sub-btn-color-alt)
+  font-size: 14px
+  font-weight: 500
+  line-height: 14px
+
+.navbar-filter__btns
+  gap: 10px
 
 .navbar-filter__tags--open
   background: var(--color-filter-background)

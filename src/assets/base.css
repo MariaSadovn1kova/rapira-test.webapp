@@ -32,6 +32,7 @@
   --modal-background: var(--c-black-00);
 
   --sub-btn-color: var(--c-gray-00);
+  --sub-btn-color-alt: var(--c-blue-01);
 }
 
 /* Дефолт */
