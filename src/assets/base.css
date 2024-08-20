@@ -12,6 +12,7 @@
   --c-gray-00: #A1A5B7;
   --c-gray-01: #7E8299;
   --c-gray-light: #F1F1F2;
+  --c-gray-bg: #F9F9F9;
 }
 
 /* Дефолтные цвета */
@@ -31,8 +32,17 @@
 
   --modal-background: var(--c-black-00);
 
+  --message-title-color: var(--c-gray-01);
+  --message-desc-color: var(--c-gray-00);
+
   --sub-btn-color: var(--c-gray-00);
   --sub-btn-color-alt: var(--c-blue-01);
+
+  --color-black-text: var(--c-black-01);
+  --color-gray-text: var(--c-gray-01);
+
+  --color-input-bg: var(--c-gray-bg);
+  --color-input-bg-default: var(--c-white);
 }
 
 /* Дефолт */
@@ -49,15 +59,27 @@
   --nav-filter-padding: 24px 50px;
   --nav-filter-tags-padding: 20px 50px;
 
+  --nav-filter-header-gap: 40px;
+  --nav-filter-header-flex-direction: row;
+  --nav-filter-flex-direction: row;
+  --nav-filter-content: space-between;
+
+  --nav-input-width: 400px;
+
   --container-padding: 30px;
   --container-columns: repeat(3, 1fr);
   --container-column-gap: 20px;
   --container-row-gap: 40px;
   --container-radius: 12px;
 
+  --article-modal-width: 600px;
+
   --tag-radius: 20px;
 
-  --transition: 0.3s
+  --transition: 0.3s;
+
+  --mobile-hidden: flex;
+  --mobile-show: none;
 }
 
 /* Планшет */
@@ -79,6 +101,8 @@
     --container-column-gap: 20px;
     --container-row-gap: 25px;
     --container-padding: 15px;
+
+    --mobile-hidden: flex;
   }
 }
 
@@ -95,8 +119,20 @@
     --nav-filter-padding: 12px 10px;
     --nav-filter-tags-padding: 12px 10px;
 
+    --nav-filter-header-gap: 10px;
+    --nav-filter-header-flex-direction: column;
+    --nav-filter-flex-direction: column;
+    --nav-filter-content: none;
+
+    --nav-input-width: 100%;
+
     --container-columns: 1fr;
     --container-row-gap: 20px;
     --container-padding: 15px;
+
+    --article-modal-width: 350px;
+
+    --mobile-hidden: none;
+    --mobile-show: flex;
   }
 }

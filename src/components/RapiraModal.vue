@@ -1,13 +1,21 @@
 <script lang="ts" setup>
-import { onClickOutside } from '@vueuse/core';
+import { vOnClickOutside } from '@vueuse/components';
 
+const emit = defineEmits(['onModalClose']);
+
+const onClose = () => {
+  emit('onModalClose');
+}
 </script>
 
 <template>
   <Teleport to="body">
     <div class="modal">
-      <div class="modal__content">
-        ffdsf
+      <div 
+        v-on-click-outside="onClose"
+        class="modal__content"
+      >
+        <slot />
       </div>
     </div>
   </Teleport>
@@ -16,9 +24,12 @@ import { onClickOutside } from '@vueuse/core';
 <style lang="sass" scoped>
 .modal
   width: 100vw
-  height: 100vh
+  height: 100%
 
   position: fixed
+  display: flex
+  align-items: center
+  justify-content: center
 
   top: 0
   left: 0
@@ -30,8 +41,8 @@ import { onClickOutside } from '@vueuse/core';
   animation-fill-mode: forwards
 
 .modal__content 
-  position: relative
+  padding: 15px
+  border-radius: 15px
   background: white
-  border-radius: 32px
 
 </style>
