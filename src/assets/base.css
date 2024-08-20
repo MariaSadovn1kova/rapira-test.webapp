@@ -24,10 +24,14 @@
 
   --tag-background: var(--c-blue-light);
   --tag-color: var(--c-blue-01);
+  --tag-background-active: var(--c-blue-00);
+  --tag-color-active: var(--c-white);
 
   --article-info-color: var(--c-gray-01);
 
-  --modal-background: var(--c-black-00)
+  --modal-background: var(--c-black-00);
+
+  --sub-btn-color: var(--c-gray-00);
 }
 
 /* Дефолт */
@@ -40,7 +44,9 @@
   --nav-wrapper-padding: 0 50px;
   --nav-width: 1300px;
 
+  --nav-filter-width: 1210px;
   --nav-filter-padding: 24px 50px;
+  --nav-filter-tags-padding: 20px 50px;
 
   --container-padding: 30px;
   --container-columns: repeat(3, 1fr);
@@ -64,7 +70,9 @@
     --nav-wrapper-padding: 0 22px;
     --nav-width: 780px;
 
+    --nav-filter-width: 780px;
     --nav-filter-padding: 24px 22px;
+    --nav-filter-tags-padding: 20px 22px;
 
     --container-columns: repeat(2, 1fr);
     --container-column-gap: 20px;
@@ -83,7 +91,8 @@
 
     --nav-wrapper-padding: 0 22px;
 
-    --nav-filter-padding: 12px 22px;
+    --nav-filter-padding: 12px 10px;
+    --nav-filter-tags-padding: 12px 10px;
 
     --container-columns: 1fr;
     --container-row-gap: 20px;

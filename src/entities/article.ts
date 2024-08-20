@@ -3,6 +3,7 @@ import type { IArticle } from '@/shared';
 
 interface ArticleState {
   articles: IArticle[]
+  tags: string[]
 }
 
 export const useArticleStore = defineStore('article', {    
@@ -78,10 +79,13 @@ export const useArticleStore = defineStore('article', {
           }
         ]
       }
-    ]
+    ],
+
+    tags: ['Кино', 'Поп-культура', 'Игры', 'Книги', 'Комиксы'] 
   }),
 
   getters: {
     activeArticles: (state) => state.articles,
+    activeTags: (state) => state.tags,
   }
 });
