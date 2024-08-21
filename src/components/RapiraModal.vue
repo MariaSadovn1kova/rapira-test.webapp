@@ -13,7 +13,7 @@ const onClose = () => {
     <div class="modal">
       <div 
         v-on-click-outside="onClose"
-        class="modal__content"
+        class="modal__content custom-scroll"
       >
         <slot />
       </div>
@@ -41,6 +41,9 @@ const onClose = () => {
   animation-fill-mode: forwards
 
 .modal__content 
+  max-height: 90vh
+  overflow-y: scroll
+
   padding: 15px
   border-radius: 15px
   background: white

@@ -105,6 +105,7 @@
 
   --article-modal-width: 600px;
   --article-modal-image-height: 373px;
+  --article-modal-title-width: 570px;
 
   --article-comment-width: 526px;
 
@@ -168,8 +169,9 @@
     --container-row-gap: 20px;
     --container-padding: 15px;
 
-    --article-modal-width: 350px;
+    --article-modal-width: 320px;
     --article-modal-image-height: 200px;
+    --article-modal-title-width: 290px;
 
     --article-comment-width: 246px;
 

@@ -6,7 +6,7 @@ const props = defineProps<IProps>();
 </script>
 
 <template>
-  <div class="tag">
+  <div class="tag flex items-center">
     <span class="tag__text">{{ tagText }}</span>
   </div>
 </template>

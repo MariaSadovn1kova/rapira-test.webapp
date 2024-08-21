@@ -78,7 +78,7 @@ const hasError = computed(() => { return props.charLimitation < modelStr.value.l
 
 .comment-info__sub--active
   margin-top: 6px
-  height: 54px
+  height: 64px
   opacity: 1
 
 .comment-input__info
@@ -100,6 +100,7 @@ const hasError = computed(() => { return props.charLimitation < modelStr.value.l
   line-height: 14px
 
 .comment-info__btns
+  margin-top: 10px
   gap: 10px
 
 .comment-info__btn--main

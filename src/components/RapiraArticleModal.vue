@@ -46,7 +46,7 @@ const createComment = () => {
         <div class="flex justify-between">
           <h2 class="article-modal__title">{{ article.title }}</h2>
           <button 
-            class="flex items-start"
+            class="flex items-start mt-1"
             @click="closeArticleModal"
           >
             <img 
@@ -75,7 +75,9 @@ const createComment = () => {
         :tags="article.tags"
       />
 
-      <div class="article-modal__comms flex flex-col">
+      <div 
+        class="article-modal__comms flex flex-col"
+      >
         <p class="article-modal__comms-title">
           Комментариев <span class="article-modal__comms-count">{{ article.comments.length }}</span> 
         </p>
@@ -84,7 +86,10 @@ const createComment = () => {
           :charLimitation="250"
           @onSubmit="createComment()"
         />
-        <div>
+        <div 
+          v-if="article.comments.length" 
+          class="article-modal__comms-container"
+        >
           <RapiraComment
             v-for="comment in article.comments"
             :key="comment.id"
@@ -108,6 +113,8 @@ const createComment = () => {
   gap: 10px
 
 .article-modal__title
+  width: var(--article-modal-title-width)
+
   font-size: 24px
   font-weight: 600
   line-height: 24px
@@ -141,7 +148,7 @@ const createComment = () => {
 .article-modal__comms-title
   color: var(--color-black-text)
   font-size: 16px
-  font-weight: 700
+  font-weight: 600
   line-height: 16px
 
 .article-modal__comms-count
@@ -149,5 +156,4 @@ const createComment = () => {
   font-size: 16px
   font-weight: 500
   line-height: 16px
-
 </style>
